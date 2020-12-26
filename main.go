@@ -1,9 +1,9 @@
 package main
 
 import (
-	"github.com/hpazk/levenshtein/app/modules"
+	"github.com/hpazk/levenshtein-algorithm/app/modules"
 )
 
 func main() {
-	modules.Levenshtein("satu", "saut")
+	modules.Levenshtein("satu", "katu")
 }
