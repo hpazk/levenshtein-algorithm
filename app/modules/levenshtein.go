@@ -1,8 +1,6 @@
 package modules
 
 import (
-	"fmt"
-
 	"github.com/hpazk/levenshtein-algorithm/app/utils"
 )
 
@@ -10,14 +8,8 @@ func levenshteinDistance(t, s string) int {
 	target := []rune(t)
 	source := []rune(s)
 
-	fmt.Println("rune target", target)
-	fmt.Println("rune source", source)
-
 	targetLen := len(target)
 	sourceLen := len(source)
-
-	fmt.Println("len target", targetLen)
-	fmt.Println("len source", sourceLen)
 
 	if targetLen == 0 {
 		return sourceLen
@@ -49,8 +41,6 @@ func levenshteinDistance(t, s string) int {
 			lastKey = oldKey
 		}
 	}
-
-	fmt.Println(col[targetLen])
 
 	return col[targetLen]
 }
