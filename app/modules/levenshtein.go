@@ -6,8 +6,7 @@ import (
 	"github.com/hpazk/levenshtein-algorithm/app/utils"
 )
 
-// Levenshtein is...
-func Levenshtein(t, s string) int {
+func levenshteinDistance(t, s string) int {
 	target := []rune(t)
 	source := []rune(s)
 
