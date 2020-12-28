@@ -11,30 +11,22 @@ import (
 func main() {
 	source := helper.Scraper()
 	var search string
+	var bookTitleList []string
+	var bookKeyword string
 
 	fmt.Print("input keyword:")
 	fmt.Scan(&search)
 
-	var bookTitle []string
-
 	for _, v := range source {
 		match, cond := modules.MatchString(search, strings.Split(v, ""))
 		if cond {
-			bookTitle = append(bookTitle, match)
+			bookTitleList = append(bookTitleList, match)
 		}
 	}
 
-	var bookKeyword string
-	for i := 0; i < len(bookTitle); i++ {
-		// fmt.Println(result[i])
-
-		bookKeyword += bookTitle[i] + " "
+	for i := 0; i < len(bookTitleList); i++ {
+		bookKeyword += bookTitleList[i] + " "
 	}
 
-	modules.Match(search, bookKeyword)
-
-	// strList0 := []string{"test", "trigger", "top", "ten", "throw", "tonight"}
-	// for i := 0; i < len(result); i++ {
-
-	// }
+	modules.Match(search, bookKeyword, bookTitleList)
 }

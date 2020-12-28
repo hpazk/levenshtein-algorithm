@@ -62,12 +62,13 @@ func RemoveDuplicateValues(strSlice []string) []string {
 			list = append(list, entry)
 		}
 	}
+
 	return list
 }
 
 // FuzzySearch is...
 func FuzzySearch(t string, sList []string) (string, error) {
-	var higherMatchPercent float32
+	var hMatchLevel float32
 	var tmpStr string
 	for _, strToCmp := range sList {
 		sim, err := matchingIndex(t, strToCmp)
@@ -77,8 +78,8 @@ func FuzzySearch(t string, sList []string) (string, error) {
 
 		if sim == 1.0 {
 			return strToCmp, nil
-		} else if sim > higherMatchPercent {
-			higherMatchPercent = sim
+		} else if sim > hMatchLevel {
+			hMatchLevel = sim
 			tmpStr = strToCmp
 		}
 	}
