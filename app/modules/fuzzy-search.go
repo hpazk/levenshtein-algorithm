@@ -43,6 +43,28 @@ func MatchString(str string, s []string) (string, bool) {
 	return result, true
 }
 
+// CompareWord is...
+func CompareWord(text string, arr []string) bool {
+	textLower := strings.ToLower(text)
+	result := strings.Contains(strings.Join(arr, ""), textLower)
+
+	return result
+}
+
+// RemoveDuplicateValues is...
+func RemoveDuplicateValues(strSlice []string) []string {
+	keys := make(map[string]bool)
+	list := []string{}
+
+	for _, entry := range strSlice {
+		if _, value := keys[entry]; !value {
+			keys[entry] = true
+			list = append(list, entry)
+		}
+	}
+	return list
+}
+
 // FuzzySearch is...
 func FuzzySearch(t string, sList []string) (string, error) {
 	var higherMatchPercent float32

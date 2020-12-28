@@ -30,10 +30,10 @@ func Scraper() []string {
 	var title []string
 
 	// var title []string
-	doc.Find(".cmp-text").Each(func(i int, sel *goquery.Selection) {
-		text := sel.Find("i").Text()
+	doc.Find(".bookCard__wrapper").Each(func(i int, sel *goquery.Selection) {
+		text := sel.Find("h5").Text()
 		title = append(title, text)
 	})
 
-	return title[2:(len(title) - 1)]
+	return title
 }
