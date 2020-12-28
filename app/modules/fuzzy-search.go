@@ -1,26 +1,54 @@
 package modules
 
-// StringsSimilarity is...
-func stringsSimilarity(str1 string, str2 string) (float32, error) {
-	return matchingIndex(str1, str2, levenshteinDistance(str1, str2)), nil
-}
+import (
+	"strings"
+)
 
-// Return matching index E [0..1] from two strings and an edit distance
-func matchingIndex(str1 string, str2 string, distance int) float32 {
-	// Compare strings length and make a matching percentage between them
-	if len(str1) >= len(str2) {
-		return float32(len(str1)-distance) / float32(len(str1))
+func matchingIndex(t, s string) (float32, error) {
+	distance := levenshteinDistance(t, s)
+	if len(t) >= len(t) {
+		return float32(len(t)-distance) / float32(len(t)), nil
 	}
-	return float32(len(str2)-distance) / float32(len(str2))
+	return float32(len(s)-distance) / float32(len(s)), nil
 }
 
-// FuzzySearch realize an approximate search on a string list and return the closest one compared
-// to the string input
-func FuzzySearch(str string, strList []string) (string, error) {
+// func stringsSimilarity(t, s string) (float32, error) {
+// 	return matchingIndex(t, s, levenshteinDistance(t, s)), nil
+// }
+
+// MatchString is...
+func MatchString(str string, s []string) (string, bool) {
+	trimStr := strings.ToLower(strings.ReplaceAll(str, " ", ""))
+	var tokens []string
+
+	var sPos = 0
+
+	for i := 0; i < len(s); i++ {
+		chr := strings.ToLower(s[i])
+
+		if sPos < len(str) && chr == string(trimStr[sPos]) {
+			tmpChr := chr
+			chr = tmpChr
+			sPos++
+		}
+		tokens = append(tokens, chr)
+	}
+
+	if sPos != len(str) {
+		return "", false
+	}
+
+	result := strings.Join(tokens, "")
+
+	return result, true
+}
+
+// FuzzySearch is...
+func FuzzySearch(t string, sList []string) (string, error) {
 	var higherMatchPercent float32
 	var tmpStr string
-	for _, strToCmp := range strList {
-		sim, err := stringsSimilarity(str, strToCmp)
+	for _, strToCmp := range sList {
+		sim, err := matchingIndex(t, strToCmp)
 		if err != nil {
 			return "", err
 		}

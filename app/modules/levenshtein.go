@@ -1,7 +1,7 @@
 package modules
 
 import (
-	"github.com/hpazk/levenshtein-algorithm/app/utils"
+	"github.com/hpazk/levenshtein-algorithm/app/helper"
 )
 
 func levenshteinDistance(t, s string) int {
@@ -15,7 +15,7 @@ func levenshteinDistance(t, s string) int {
 		return sourceLen
 	} else if sourceLen == 0 {
 		return targetLen
-	} else if utils.EqualCompare(target, source) {
+	} else if helper.Compare(target, source) {
 		return 0
 	}
 
@@ -34,8 +34,8 @@ func levenshteinDistance(t, s string) int {
 			if target[i-1] != source[j-1] {
 				x = 1
 			}
-			col[i] = utils.FindMin(
-				utils.FindMin(col[i]+1, col[i-1]+1),
+			col[i] = helper.Min(
+				helper.Min(col[i]+1, col[i-1]+1),
 				lastKey+x,
 			)
 			lastKey = oldKey

@@ -1,7 +1,7 @@
-package utils
+package helper
 
-// EqualCompare is...
-func EqualCompare(a, b []rune) bool {
+// Compare is...
+func Compare(a, b []rune) bool {
 	if len(a) != len(b) {
 		return false
 	}
@@ -15,8 +15,8 @@ func EqualCompare(a, b []rune) bool {
 	return true
 }
 
-// FindMin is...
-func FindMin(a, b int) int {
+// Min is...
+func Min(a, b int) int {
 	if a < b {
 		return a
 	}
