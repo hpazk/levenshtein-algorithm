@@ -45,7 +45,11 @@ Mencari judul buku klasik berdasarkan keyword yang dilansir dari halaman: [https
 4. Mengembalikan hasil dengan kondisi
 
     * Jika keyword yang dimasukan tidak ada yang sesuai dengan source string dari list judul buku, maka tampilkan pesan *"Book not found, search instead for (`keyword`)*
+  
+    ![Not Match](demo/not-match.png)
 
     * Jika keyword yang dimasukan memiliki kemiripan dengan source string dari list judul buku, maka tampilkan pesan *Did you mean: (`levenshtein(keyword, source`))*
-    
+    ![Match](demo/match.png)
+    ![Match](demo/similar.png)
+
     * Jika ada error maka tampilkan pesan error
