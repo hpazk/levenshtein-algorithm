@@ -10,8 +10,8 @@ Secara matematika dapat didefinisikan sebagai berikut: \
 \
 `Lev t, s = (|t|, |s|)`\
 \
-dimana t adalah text-target dan s adalah source-text\
-\
+dimana t adalah text-target dan s adalah source-text
+
 > Adapun yang dimaksud dengan edit distance adalah pengeditan pada karakter tunggal pada kata yang dibandingkan seperti insertion (penyisipan), deletion (penghapusan), atau subtitution (penggantian)
 
 #### Contoh
